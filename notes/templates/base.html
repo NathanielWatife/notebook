@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='assets/main.css')}}">
+    <title>
+        {% block title %}
+            HOME
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    {% block nav %}
+    <ul>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a class="active" href="/login">Login</a></li>
+        <li><a class="active" href="/signup">Sign Up</a></li>
+        <li><a class="active" href="/logout">Logout</a></li>
+        
+    </ul>
+
+    {% endblock nav %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages  %}
+                {% if category == 'error' %}
+                    {{ message }}
+                {% else %}
+                    {{ message }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block content %}
+    
+    {% endblock content %}
+</body>
+</html>

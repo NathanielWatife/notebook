@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <section>
+        <div>
+            <form method="POST">
+                {% for message in get_flashed_messages() %}
+                  <h4>{{ message }}</h4>
+                {% endfor %}
+                <h3 align="center">Notes</h3>
+                <input type="text" id="notes" name="notes" placeholder="Add notes" required>
+                <input type="submit" value="Add to Notes">
+                </form>
+        </div>
+    </section>
+{% endblock content %}
